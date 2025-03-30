@@ -1,4 +1,4 @@
-#include "redisconnector.h"
+#include "../include/redisconnector.h"
 #include <QDebug>
 #include <QAbstractEventDispatcher>
 

@@ -10,16 +10,17 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    redisconnector.cpp \
-    redisdata.cpp \
-    redissubscriber.cpp
+    ./src/redisconnector.cpp \
+    ./src/redisdata.cpp \
+    ./src/redissubscriber.cpp
 
 HEADERS += \
-    redisconnector.h \
-    redisdata.h \
-    redissubscriber.h
+    ./include/redisconnector.h \
+    ./include/redisdata.h \
+    ./include/redissubscriber.h
 
 LIBS += -lhiredis
+
 # Default rules for deployment.
 unix {
     target.path = $$[QT_INSTALL_PLUGINS]/generic

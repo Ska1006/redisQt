@@ -1,4 +1,4 @@
-#include "redisdata.h"
+#include "../include/redisdata.h"
 
 RedisData::RedisData(const QString &addr, quint16 port)
     :RedisConnector(addr, port)

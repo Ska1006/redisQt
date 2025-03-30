@@ -2,7 +2,7 @@
 #define REDISDATA_H
 
 #include <QObject>
-#include "redisconnector.h"
+#include "../include/redisconnector.h"
 
 class RedisData : public RedisConnector
 {
