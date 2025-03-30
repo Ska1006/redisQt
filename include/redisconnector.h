@@ -16,8 +16,10 @@ public:
 
     RedisConnector(const QString &addr, quint16 port = 6379);
 
-    bool connected() const;
-
+    bool isConnected() const;
+signals:
+    void connected();
+    void disconnected();
 
 protected:
     friend void subscribeCallback(redisAsyncContext* , void* , void* );

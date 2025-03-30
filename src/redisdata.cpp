@@ -39,12 +39,22 @@ void RedisData::setValue(const QString &key, const QVariant &value)
 
 QHash<QString, QVariant> RedisData::getValues(const QVector<QString> &keys)
 {
-
+    QHash<QString, QVariant> res;
+    for(const QString &key : keys){
+        res.insert(key, getValue(key));
+    }
+    return res;
 }
 
 void RedisData::setValues(const QHash<QString, QVariant> &values)
 {
-
+    redisAsyncCommand( m_context, RedisData::commandCallback, nullptr, "MULTI" );
+    auto it = values.constBegin();
+    while(it != values.constEnd()){
+        setValue(it.key(), it.value());
+        ++it;
+    }
+    redisAsyncCommand( m_context, RedisData::commandCallback, nullptr, "EXEC" );
 }
 
 

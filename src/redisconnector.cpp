@@ -82,7 +82,7 @@ RedisConnector::RedisConnector(const QString &addr, quint16 port)
 
 
 
-bool RedisConnector::connected() const
+bool RedisConnector::isConnected() const
 {
     return m_connected;
 }
@@ -107,12 +107,12 @@ bool RedisConnector::init()
     auto onConnect = [](const redisAsyncContext * context, int status){
         RedisConnector *t = static_cast<RedisConnector*>(context->data);
         t->m_connected = true;
-        qDebug() << "Connected";
+        emit t->connected();
     };
     auto onDisconnect = [](const redisAsyncContext * context, int status){
         RedisConnector *t = static_cast<RedisConnector*>(context->data);
         t->m_connected = false;
-        qDebug() << "Disconnected";
+        emit t->disconnected();
     };
     redisOptions options = {0};
     REDIS_OPTIONS_SET_TCP(&options, m_addr.toLatin1().data(), m_port);

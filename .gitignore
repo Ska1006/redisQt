@@ -52,3 +52,5 @@ compile_commands.json
 *creator.user*
 
 *_qmlcache.qrc
+
+build/Desktop_Qt_5_15_15_GCC_64bit-Debug/.qtc_clangd/.cache/clangd/index/
